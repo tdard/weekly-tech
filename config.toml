@@ -1,0 +1,7 @@
+baseURL = 'http://example.org/'
+languageCode = 'fr-FR'
+title = 'Weekly tech'
+theme = 'ananke'
+
+Paginate = 10
+summaryLength = 40

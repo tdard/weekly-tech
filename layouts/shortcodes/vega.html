@@ -1,0 +1,17 @@
+{{ with ($div_id := .Get "div_id")}}
+    <div id={{ $div_id }}></div>
+
+    {{ with ($file := ($.Page.Resources.Get ($.Get "file"))) }}
+        <script type="text/javascript">
+            
+            fetch({{ $file.Permalink }})
+            .then(res => res.json())
+            .then(spec => render(spec))
+            .catch(err => console.error(err));
+            
+            function render(spec) {
+                vegaEmbed('#{{ $div_id }}', spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+            }
+        </script>
+    {{ end }}
+{{ end }}

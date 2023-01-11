@@ -1,0 +1,14 @@
+<!-- Pyscript -->
+<!-- <script defer src="https://pyscript.net/latest/pyscript.js"></script> -->
+<!-- <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" /> -->
+
+<!-- Vega, Vega-lite and Vega-embed -->
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <!-- Import vega-embed -->
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+<!-- Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website -->
+{{- $styles := resources.Get "main.scss" | resources.ExecuteAsTemplate "main.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+
