@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://tdard.github.io/weekly-tech'
 languageCode = 'fr-FR'
 title = 'Weekly tech'
 theme = 'ananke'
