@@ -1,7 +1,7 @@
 ---
 title: "Altair-viz 2: Make charts more beautiful"
 date: 2023-01-09T17:27:56+01:00
-draft: true
+draft: false
 featured_image: "/images/altair_viz.png"
 tags: ["data-visualization", "altair-viz", "python"]
 summary: You told me that my chart would look good but it’s still ugly 🤡 
