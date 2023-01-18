@@ -5,4 +5,3 @@ theme = 'ananke'
 
 Paginate = 10
 summaryLength = 40
-publishDir = "public/weekly-tech"
