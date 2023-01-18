@@ -21,12 +21,12 @@ resources:
 <--->
 
 
-![heatmap](/images/2023_S1_1.png)
+![heatmap](2023_S1_1.png)
 
 <--->
 
-![bars](/images/2023_S1_5.png)
-![areas](/images/2023_S1_3.png)
+![bars](2023_S1_5.png)
+![areas](2023_S1_3.png)
 
 
 {{< /columns >}}
@@ -96,7 +96,7 @@ For that, once you defined proper encodings, you can tell altair *what* to draw:
 chart.mark_point()
 ```
 
-![mark_point](/images/mark_point.png)
+![mark_point](mark_point.png)
 
 <--->
 #### Bar chart
@@ -105,7 +105,7 @@ chart.mark_point()
 chart.mark_bar()
 ```
 
-![mark_bar](/images/mark_bar.png)
+![mark_bar](mark_bar.png)
 
 <--->
 #### Line chart
@@ -114,7 +114,7 @@ chart.mark_bar()
 chart.mark_line()
 ```
 
-![mark_line](/images/mark_line.png)
+![mark_line](mark_line.png)
 
 {{< /columns >}}
 
