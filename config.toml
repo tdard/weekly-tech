@@ -1,7 +1,6 @@
-baseURL = 'https://tdard.github.io/weekly-tech'
+baseURL = 'https://tdard.github.io'
 languageCode = 'fr-FR'
 title = 'Weekly tech'
 theme = 'ananke'
-
 Paginate = 10
 summaryLength = 40
