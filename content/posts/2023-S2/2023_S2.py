@@ -1,5 +1,6 @@
 import pandas as pd
 import altair as alt
+from altair import expr
 
 df = pd.DataFrame({
     "x": [1, 2, 3, 4, 5, 6],
