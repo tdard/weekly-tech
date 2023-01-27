@@ -5,3 +5,6 @@ theme = 'ananke'
 
 Paginate = 10
 summaryLength = 40
+
+[params]
+    favicon = "favicon.ico"
