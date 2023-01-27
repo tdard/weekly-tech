@@ -1,7 +1,7 @@
 ---
 title: "Altair-viz 3: Data transforms with altair: why, what and how"
 date: 2023-01-20T12:13:49+01:00
-draft: true
+draft: false
 featured_image: "/images/altair_viz.png"
 tags: ["data-visualization", "altair-viz", "python"]
  
@@ -679,5 +679,16 @@ I'm not sure whether I would prefer this method over `DataFrame.merge`, but for 
 try to this Altair's transform. 
 
 # Conclusion
+
+By now, you should have a broad overview of Altair data transformations.  
+They permit to add _new columns_, to compute _aggregates_ and to _reshape_ or _combine_ dataframes.
+
+Some are useful and some are less in practice, but it should always be kept in mind that the only legitimate use of 
+Altair transforms is when you need a data transformation only for one chart, and that the data you have is small enough.
+
+
+In the next episode, we will talk about layout handling: how to manage multiple plots for a single chart.
+
+Stay tuned!
 
 
