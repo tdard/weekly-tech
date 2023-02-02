@@ -80,17 +80,6 @@ One solution is to create a temporary dataframe (the 🐼 classic):
 data_filtered_on_theta = data[(data.theta <= np.pi) & (data.theta >= 0)]
 ````
 
-It triggers me when I need to display a subset of a _pandas_ dataframe, as I am forced to copy and paste the name of the 
-`ultra_long_processed_df_to_display`. 
-
-The name of is usually so long, that it completely hides what is filtered. Moreover, you recreate a brand new dataframe 
-in a dedicated cell of your jupyter notebook as it was useful for the remaining 90 cells, but nah you just want it for 
-one chart.
-
-It also s*cks because you spent more time thinking about how to name the newly filtered dataframe (like 
-`ultra_long_processed_df_to_display_filtered`), and to be honest I feel that if you want to use any kind of filtering or 
-transformation only for one chart, you should rather be able to do it in your chart specifications.
-
 Otherwise, you just apply the method `transform_filter` on the chart, specifying how you want to filter data:
 ````python
 chart = chart.transform_filter(
