@@ -1,6 +1,6 @@
 ---
-title: "Weekly tech 2023"
-description: "The weekly dose of technology"
+title: "Weekly tech"
+description: "Regular news for data geeks"
 cascade:
   featured_image: "/images/banner.png"
 ---
