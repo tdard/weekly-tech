@@ -186,8 +186,13 @@ chart = alt.Chart(
   height=150, 
   width=400
 ).encode(
-    x=alt.X("x:O", title="Sample index", axis=alt.Axis(labelAngle=90)), 
-    y=alt.Y("y:Q", title="Size", scale=alt.Scale(type="log", domainMax=100)), 
+    x=alt.X("x:O", 
+            title="Sample index", 
+            axis=alt.Axis(labelAngle=90, titleColor="#cc005c")), 
+    y=alt.Y("y:Q", 
+            title="Size", 
+            scale=alt.Scale(type="log", domainMax=100), 
+            axis=alt.Axis(tickCount=10, titleColor="#cc7000")), 
     color=alt.Color("z:Q", title="Heat exposure", scale=alt.Scale(scheme="oranges"))
 ).mark_bar()
 ````
