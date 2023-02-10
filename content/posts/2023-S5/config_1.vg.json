@@ -1,0 +1,161 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "background": "white",
+  "padding": 5,
+  "width": 400,
+  "height": 200,
+  "style": "cell",
+  "data": [
+    {"name": "selector001_store"},
+    {
+      "name": "data-1e0ec9b5bf9f834d58d017acb362c04a",
+      "values": [
+        {"x": 1, "y": 6, "year": 2022},
+        {"x": 2, "y": 3, "year": 2022},
+        {"x": 3, "y": 6, "year": 2022},
+        {"x": 4, "y": 2, "year": 2023},
+        {"x": 5, "y": 5, "year": 2023}
+      ]
+    },
+    {
+      "name": "data_0",
+      "source": "data-1e0ec9b5bf9f834d58d017acb362c04a",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "!(length(data(\"selector001_store\"))) || (vlSelectionTest(\"selector001_store\", datum))"
+        },
+        {
+          "type": "stack",
+          "groupby": ["x"],
+          "field": "y",
+          "sort": {"field": ["year"], "order": ["descending"]},
+          "as": ["y_start", "y_end"],
+          "offset": "zero"
+        },
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"y\"]) && isFinite(+datum[\"y\"])"
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "name": "unit",
+      "value": {},
+      "on": [
+        {"events": "mousemove", "update": "isTuple(group()) ? group() : unit"}
+      ]
+    },
+    {
+      "name": "selector001_year",
+      "value": null,
+      "bind": {"input": "select", "options": [2022, 2023], "name": "Year"}
+    },
+    {
+      "name": "selector001",
+      "update": "vlSelectionResolve(\"selector001_store\", \"union\")"
+    },
+    {
+      "name": "selector001_tuple",
+      "update": "selector001_year !== null ? {fields: selector001_tuple_fields, values: [selector001_year]} : null"
+    },
+    {
+      "name": "selector001_tuple_fields",
+      "value": [{"type": "E", "field": "year"}]
+    },
+    {
+      "name": "selector001_modify",
+      "on": [
+        {
+          "events": {"signal": "selector001_tuple"},
+          "update": "modify(\"selector001_store\", selector001_tuple, true)"
+        }
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "name": "marks",
+      "type": "rect",
+      "style": ["bar"],
+      "interactive": true,
+      "from": {"data": "data_0"},
+      "encode": {
+        "update": {
+          "fill": {"scale": "color", "field": "year"},
+          "ariaRoleDescription": {"value": "bar"},
+          "description": {
+            "signal": "\"year: \" + (isValid(datum[\"year\"]) ? datum[\"year\"] : \"\"+datum[\"year\"]) + \"; x: \" + (isValid(datum[\"x\"]) ? datum[\"x\"] : \"\"+datum[\"x\"]) + \"; y: \" + (format(datum[\"y\"], \"\"))"
+          },
+          "x": {"scale": "x", "field": "x"},
+          "width": {"scale": "x", "band": 1},
+          "y": {"scale": "y", "field": "y_end"},
+          "y2": {"scale": "y", "field": "y_start"}
+        }
+      }
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "band",
+      "domain": {"data": "data_0", "field": "x", "sort": true},
+      "range": [0, {"signal": "width"}],
+      "paddingInner": 0.1,
+      "paddingOuter": 0.05
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "domain": {"data": "data_0", "fields": ["y_start", "y_end"]},
+      "range": [{"signal": "height"}, 0],
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {"data": "data_0", "field": "year", "sort": true},
+      "range": "ordinal",
+      "interpolate": "hcl"
+    }
+  ],
+  "axes": [
+    {
+      "scale": "y",
+      "orient": "left",
+      "gridScale": "x",
+      "grid": true,
+      "tickCount": {"signal": "ceil(height/40)"},
+      "domain": false,
+      "labels": false,
+      "aria": false,
+      "maxExtent": 0,
+      "minExtent": 0,
+      "ticks": false,
+      "zindex": 0
+    },
+    {
+      "scale": "x",
+      "orient": "bottom",
+      "grid": false,
+      "title": "x",
+      "labelAlign": "right",
+      "labelAngle": 270,
+      "labelBaseline": "middle",
+      "zindex": 0
+    },
+    {
+      "scale": "y",
+      "orient": "left",
+      "grid": false,
+      "title": "y",
+      "labelOverlap": true,
+      "tickCount": {"signal": "ceil(height/40)"},
+      "zindex": 0
+    }
+  ],
+  "legends": [{"fill": "color", "symbolType": "square", "title": "year"}]
+}

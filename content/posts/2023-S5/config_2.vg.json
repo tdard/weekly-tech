@@ -1,0 +1,34 @@
+{
+  "config": {"view": {"continuousWidth": 400, "continuousHeight": 300}},
+  "data": {"name": "data-1e0ec9b5bf9f834d58d017acb362c04a"},
+  "mark": "bar",
+  "encoding": {
+    "color": {"field": "year", "type": "ordinal"},
+    "opacity": {
+      "condition": {"value": 1, "selection": "selector001"},
+      "value": 0.2
+    },
+    "x": {"field": "x", "type": "ordinal"},
+    "y": {"field": "y", "type": "quantitative"}
+  },
+  "height": 200,
+  "selection": {
+    "selector001": {
+      "type": "single",
+      "fields": ["year"],
+      "bind": "legend",
+      "on": "mouseover"
+    }
+  },
+  "width": 400,
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.17.0.json",
+  "datasets": {
+    "data-1e0ec9b5bf9f834d58d017acb362c04a": [
+      {"x": 1, "y": 6, "year": 2022},
+      {"x": 2, "y": 3, "year": 2022},
+      {"x": 3, "y": 6, "year": 2022},
+      {"x": 4, "y": 2, "year": 2023},
+      {"x": 5, "y": 5, "year": 2023}
+    ]
+  }
+}

@@ -3,15 +3,12 @@
 
     {{ with ($file := ($.Page.Resources.Get ($.Get "file"))) }}
         <script type="text/javascript">
-            
-            fetch({{ $file.Permalink }})
-            .then(res => res.json())
-            .then(spec => render(spec))
-            .catch(err => console.error(err));
-            
-            function render(spec) {
-                vegaEmbed('#{{ $div_id }}', spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
-            }
+            vegaEmbed(
+                '#{{ $div_id }}',
+                "{{ $file.Permalink }}"
+            ).then(function(result) {
+                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            }).catch(console.error);
         </script>
     {{ end }}
 {{ end }}
