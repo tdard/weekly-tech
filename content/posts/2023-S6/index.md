@@ -1,5 +1,5 @@
 ---
-title: "'La pizza était délicieuse mais le service était déplorable: genèse de l'aspect based sentiment analysis'"
+title: "'La pizza était délicieuse mais le service était déplorable': genèse de l'analyse de sentiment basée sur l'aspect"
 date: 2023-02-15T21:34:06+01:00
 draft: true
 ---
