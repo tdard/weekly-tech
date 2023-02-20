@@ -59,7 +59,7 @@ nouveau: l'_aspect based sentiment analysis_ ou analyse de sentiment basée sur 
 ### Taxonomie
 
 Pour introduire de façon convenable ce champ de recherche, il faut définir une base commune de vocabulaire. 
-Heureusement pour vous, il n'y a que quatre termes principaux à retenir pour l'instant; ceux-ci sont les éléments 
+Heureusement pour nous, il n'y a que quatre termes principaux à retenir pour l'instant; ceux-ci sont les éléments 
 porteurs de sentiment dans un texte.
 
 > "La pizza était délicieuse!"
