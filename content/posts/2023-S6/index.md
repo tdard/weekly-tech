@@ -26,7 +26,7 @@ lui d'avoir un retour des autres.
 Les marchands de biens et de services ne font pas exception à cette règle universelle: en observant et analysant ce que 
 les gens disent de leurs produits et de leur entreprise, ils peuvent ainsi s'adapter et prospérer dans leur activité.
 
-Néanmoins, s'il n'est pas difficile pour le vendeur de bettraves du marché de Flavigny-sur-Ozerain de comprendre 
+Néanmoins, s'il n'est pas difficile pour le vendeur de betteraves du marché de Flavigny-sur-Ozerain de comprendre 
 l'opinion de ses clients -qui doivent se compter sur les doigts d'une demi-main-, il est beaucoup plus compliqué pour de 
 **grosses** entreprises d'analyser manuellement (_exception faite de [ceux qui emploient des Kenyans à 2 dollars de l'heure](https://time.com/6247678/openai-chatgpt-kenya-workers/)_) toute 
 une base de commentaires - qui peut en compter des dizaines de milliers. 
@@ -78,7 +78,7 @@ porteurs de sentiment dans un texte.
 
 ### Types de problèmes
 
-On peut trier les problèmes d'ABSA en deux catégories distinctes, qu'on appelera _simples_, et _composés_.
+On peut trier les problèmes d'ABSA en deux catégories distinctes, qu'on appellera _simples_, et _composés_.
 
 - Un problème **unique** (_Single ABSA_ en anglais) consiste à trouver un unique type d'éléments dans du texte, ou bien plusieurs, mais sans 
 relations entre eux. On parle alors de _co-extractions_
@@ -108,7 +108,7 @@ traité par un être humain de façon efficace
 d'analyse de sentiment sont adaptées
 - En revanche, lorsqu'il y a besoin d'analyser chaque commentaire sous plusieurs angles, les méthodes classiques ne 
 sont pas adaptées et il faut se pencher vers l'application de techniques d'analyse de sentiment basées sur l'aspect
-- On dénombre 4 éléments porteurs de sentiments dans ce cadre là: le terme d'aspect,sa catégorie, l'opnion porté et la 
+- On dénombre 4 éléments porteurs de sentiments dans ce cadre là: le terme d'aspect,sa catégorie, l'opinion porté et la 
 polarité
 - Il y a deux grandes familles de problèmes en ABSA: _single_, et _compound ABSA_. Cette dernière permet d'obtenir 
 plusieurs éléments porteurs de sentiment avec leurs relations
