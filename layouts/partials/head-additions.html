@@ -12,3 +12,10 @@
 {{- $styles := resources.Get "main.scss" | resources.ExecuteAsTemplate "main.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 
+
+<!-- LaTeX -->
+<script
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+  type="text/javascript">
+</script>
+
