@@ -1,7 +1,7 @@
 ---
 title: "«Mais comment je résous ce problème moi?!» Modélisation en analyse de sentiment basée sur l'aspect"
 date: 2023-02-21T09:08:36+01:00
-draft: true
+draft: false
 tags: ["data science", "sentiment analysis", "absa"]
 summary: "Dans cet article nous allons parler de modélisation, ou comment aborder un problème en analyse de sentiment basée sur 
 l'aspect."
