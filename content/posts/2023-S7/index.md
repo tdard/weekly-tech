@@ -67,7 +67,7 @@ Comme j'aime faire les choses dans le désordre, commençons par parler du secon
 
 ### Extraction de feature
 
-Manifestement, il y a une diversité dans les approches d'encodage en ABSA; on y retrouve: 
+Manifestement, il y a une diversité dans les approches d'encodage en ABSA (Aspect Based Sentiment Analysis); on y retrouve: 
 - Réseaux de neurones convolutifs 
 - Réseaux de neurones récurrents
 - Transformers et modèles de langages pré-entraînés (PLM) type BERT
@@ -233,10 +233,25 @@ précédent ont été écrits) qui résume le champ des possibilités:
 ![image_2](image_2.png)
 {{</ center >}}
 
-# Conclusion
+# En bref
+- 
+- On peut s'attacher à 3 composantes majeures d'architecture: encodeurs, décodeurs et classifieurs 
+
+# En bref
 
 A la lecture de cet article, vous devriez avoir quelques billes pour comprendre de manière claire les grands paradigmes 
-de modélisation, ainsi qu'une vue haut-niveau des composantes d'architecture. 
+de modélisation, ainsi qu'une vue haut-niveau des composantes d'architecture:
+
+- On modélise actuellement selon 4 paradigmes (SeqClass, TokenClass, MRC et Seq2Seq) et 1 méta-paradigme (Pipeline)
+- Chacun de ces paradigmes propose un découpage de modèle en composantes parmi des encodeurs, décodeurs et classifieurs
+- Les encodeurs sont constitués de deux morceaux: 
+  - la transformation de texte en vecteur: c'est le prolongement lexical
+  - l'extraction de features par des techniques variées (CNN, RNN, Transformers)
+- Les approches à base de modèle de langage pré-entraînés (comme BERT) sont récentes, mais très prometteuses pour 
+répondre aux problématiques d'ABSA
+- Comme on prédit plusieurs valeurs simultanément, on utilise souvent le critère d'_exact matching_ pour déterminer si 
+une prédiction est correcte
+- On utilise par la suite des métriques usuelles de classification pour évaluer les modèles: F1, précision et rappel
 
 
 Quand bien même ces techniques de modélisation sont communes à de nombreux problèmes de NLP, vous avez désormais accès à 
