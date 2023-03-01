@@ -233,9 +233,6 @@ précédent ont été écrits) qui résume le champ des possibilités:
 ![image_2](image_2.png)
 {{</ center >}}
 
-# En bref
-- 
-- On peut s'attacher à 3 composantes majeures d'architecture: encodeurs, décodeurs et classifieurs 
 
 # En bref
 
