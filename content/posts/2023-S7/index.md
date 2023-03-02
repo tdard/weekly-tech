@@ -1,5 +1,5 @@
 ---
-title: "«Mais comment je résous ce problème moi?!» Modélisation en analyse de sentiment basée sur l'aspect"
+title: "Modélisation en Aspect Based Sentiment Analysis"
 date: 2023-02-21T09:08:36+01:00
 draft: false
 tags: ["data science", "sentiment analysis", "absa"]
@@ -27,7 +27,7 @@ en plein open-space:
 _«Mais comment je résous ce problème moi?!»_
 
 Pris de panique en remarquant les nuages sombres au dessus de la tête de votre manager, vous vous excusez d'un ton las 
-puis vous vous remettez à penser. Par un éclair de génie (et parce que vous avez lu l'[article précédent](/weekly-tech/posts/2023-s6) bien sûr), vous réalisez d'un coup qu'il s'agit d'une tâche d'analyse de 
+puis vous vous remettez à penser. Par un éclair de génie (et parce que vous avez lu l'[article précédent](/posts/2023-s6) bien sûr), vous réalisez d'un coup qu'il s'agit d'une tâche d'analyse de 
 sentiment basée sur l'aspect: vous devez prédire simultanément les topics avec leur polarité dans chaque texte de la 
 base de donnée présentée.
 
@@ -122,8 +122,8 @@ pour chaque entrée, un nombre fixé de classes en sortie.
 
 Cela permet par exemple de prédire pour chaque texte d'entrée les catégories d'aspect présentes.
 
-En considérant un texte d'entrée \\(X\\), et on cherche à prédire un vecteur de taille M, one ou multi-hot (remplit de 0 
-et de 1).
+En considérant un texte d'entrée \\(X\\), et on cherche à prédire un vecteur de taille M, _one-hot_ ou _multi-hot_ 
+(rempli de 0 et de 1).
 
 Ce paradigme de modélisation fait intervenir un encodeur (noté \\(Enc\\)) permettant d'extraire des descripteurs de la 
 phrase, et un classifieur (noté \\(CLS\\)) exploitant ces derniers afin de prédire les classes désirées.
@@ -131,6 +131,13 @@ phrase, et un classifieur (noté \\(CLS\\)) exploitant ces derniers afin de pré
 
 > Formulation: \\(Y = CLS(Enc(X))\\)
 
+{{< center >}}
+![chart_3](chart_3.png)
+{{< /center >}}
+
+
+Sur la figure explicative ci-contre, on peut remarquer que le résultat d'un modèle SeqClass donne des informations de 
+façon globale sur la phrase en entrée.
 
 
 ## Token-level Classification (TokenClass)
@@ -144,8 +151,12 @@ A la différence du paradigme SeqClass, c'est un décodeur et non un classifieur
 
 > Formulation: \\(Y = Dec(Enc(X))\\) avec \\(dim(Y) = dim(X)\\)
 
-Cette modélisation est très puissante, car elle dispose d'une fine granularité sur la prédiction: chaque token peut être 
-qualifié plusieurs termes de sentiments à la fois (aspect, opinon, catégorie ou polarité).
+{{< center >}}
+![chart_4](chart_4.png)
+{{< /center >}}
+
+Cette modélisation est très puissante car elle dispose d'une fine granularité sur la prédiction, en qualifiant chaque 
+token de la phrase en entrée.
 
 ## Machine Reading Comprehension (MRC)
 
@@ -183,7 +194,7 @@ contraignant pas la longueur de la réponse.
 
 ## Pipeline
 
-Les techniques de pipelining sont des méta-techiques: elles utilisent la composition de plusieurs techniques de façon 
+Les techniques de pipelining sont des méta-techniques: elles utilisent la composition de plusieurs techniques de façon 
 séquentielle pour résoudre un problème.
 
 On pourrait ainsi implémenter un algorithme détectant les catégories d'aspect et la polarité associée en deux temps:
