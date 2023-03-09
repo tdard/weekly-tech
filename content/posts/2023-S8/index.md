@@ -47,17 +47,21 @@ Lançons nous sur cette tâche, téléchargeons les données et c'est parti!
 
 On remarque cinq fichiers dans l'archive de données
 
-{{<figure src="figure_3.png" height="150">}} En y jetant un oeil et en lisant le README on se rend compte que:
-- baseline-B-english.txt est un fichier regroupant les prédictions de la méthode baseline pour le problème **B**, on y 
+{{<figure src="figure_3.png" height="150">}} 
+En y jetant un oeil et en lisant le README on se rend compte que:
+- **baseline-B-english.txt** est un fichier regroupant les prédictions de la méthode baseline pour le problème **B**, on y 
 voit 3 colonnes séparées par le caractère `\t`: identifiant de tweet, topic et polarité  
-- SemEval2017-task4-dev.subtask-BD.english.INPUT.txt qui est le dataset train, on y retrouve les mêmes colonnes ainsi 
+- **SemEval2017-task4-dev.subtask-BD.english.INPUT.txt** est le dataset train, on y retrouve les mêmes colonnes ainsi 
 qu'une de plus, contenant le texte des tweets
-- twitter-2016test-BD-English.txt qui se fait appeler le "GOLD file", et qui est en fait un copier-coller du dataset de 
+- **twitter-2016test-BD-English.txt** se fait appeler le "GOLD file", et qui est en fait un copier-coller du dataset de 
 train, sans la dernière colonne. On a juste les vérités terrains quoi ⚠️En revanche, il s'agit des résultats de... 2016, 
 donc on s'en fiche
-- SemEval2017_task4_test_scorer_subtaskB.pl qui est un script `perl` permettant de calculer les métriques du challenge 
+- **SemEval2017_task4_test_scorer_subtaskB.pl** est un script `perl` permettant de calculer les métriques du challenge 
 à partir de prédictions. Celles-ci sont: macro-average Recall, macro-average F1, and Accuracy
 
+
+_Un exemple du dataset d'entraînement:_
+{{<figure src="figure_5.png">}}
 
 # 📊 Evaluation
 
