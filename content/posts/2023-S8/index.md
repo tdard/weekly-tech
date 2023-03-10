@@ -12,35 +12,29 @@ Là, on en a marre. Théorie par-ci, explications fumeuses par là; quand est-ce
 Et bien Marcel mets ta ceinture, parce qu'on va se lancer dans une grande aventure: celle de résoudre une tâche 
 d'_Aspect Based Sentiment Analysis_.
 
-Laquelle? Et bien comme on a été curieux, on sait désormais qu'il y a plusieurs datasets phares dans ce domaine: 
-c'est les datasets _SemEval-20XX_ (lire _SemEval deux-mille quelque-chose_) déclinés dans leur sauce 2014 jusque 2017. 
+Laquelle? Et bien comme on a été curieux, on sait désormais qu'il y a plusieurs challenges phares dans ce domaine: 
+c'est les évènements _SemEval-20XX_ (pour _Semantic Evaluation_), déclinés en plusieurs millésimes de 2014 à 2017. 
 
-Ceux qui se croient malin feront la remarque qu'il en existe d'autres jusque 2023 (et oui, on fait une cuvée par an 
-comme le vin), mais je leur rappelerai que les tâches de ces challenges ne sont pas en lien avec l'ABSA.
+Ceux qui se croient malin feront la remarque qu'il en existe d'autres jusque 2023 (et oui, on en fait une cuvée par an), 
+mais je leur rappelerai que les tâches de ces challenges ne sont pas en lien avec l'ABSA.
 
 Comme on aime la modernité, on va s'intéresser seulement au petit dernier, le **SemEval-2017**. 
 
 # ⚙️ Mise en place de l'environnement
 
-Alors direction le [site internet](https://alt.qcri.org/semeval2017/index.php?id=tasks) du Challenge, regardons les 
-problèmes à résoudre:
+Alors direction le [site internet](https://alt.qcri.org/semeval2017/index.php?id=tasks) du challenge, regardons les 
+problèmes à résoudre associés à:
 
 
 {{< figure src="figure_1.png"  width="400">}}
 
 
-On remarque que ce qui nous intéresse est sûrement dans les tâches 4 et 5, en jetant un oeil à la première on réalise 
+On remarque que ce qui nous intéresse est sûrement dans les tâches 4 et 5, en jetant un oeil à la quatrième on réalise 
 qu'il y a de quoi faire, puisque le problème **B** demande de trouver la polarité d'un message de tweet par topic.
 
-{{< columns >}}
 ![figure_2](figure_2.png)
 
-<--->
 Lançons nous sur cette tâche, téléchargeons les données et c'est parti!
-
-{{< /columns >}}
-
-
 
 # 🛢 Les données
 
@@ -50,14 +44,14 @@ On remarque cinq fichiers dans l'archive de données
 {{<figure src="figure_3.png" height="150">}} 
 En y jetant un oeil et en lisant le README on se rend compte que:
 - **baseline-B-english.txt** est un fichier regroupant les prédictions de la méthode baseline pour le problème **B**, on y 
-voit 3 colonnes séparées par le caractère `\t`: identifiant de tweet, topic et polarité  
-- **SemEval2017-task4-dev.subtask-BD.english.INPUT.txt** est le dataset train, on y retrouve les mêmes colonnes ainsi 
+voit 3 colonnes: identifiant de tweet, topic et polarité  
+- **SemEval2017-task4-dev.subtask-BD.english.INPUT.txt** est le dataset _train_, on y retrouve les mêmes colonnes ainsi 
 qu'une de plus, contenant le texte des tweets
 - **twitter-2016test-BD-English.txt** se fait appeler le "GOLD file", et qui est en fait un copier-coller du dataset de 
 train, sans la dernière colonne. On a juste les vérités terrains quoi ⚠️En revanche, il s'agit des résultats de... 2016, 
 donc on s'en fiche
 - **SemEval2017_task4_test_scorer_subtaskB.pl** est un script `perl` permettant de calculer les métriques du challenge 
-à partir de prédictions. Celles-ci sont: macro-average Recall, macro-average F1, and Accuracy
+à partir de prédictions. Celles-ci sont: _macro-average Recall_, _macro-average F1_, et _Accuracy_
 
 
 _Un exemple du dataset d'entraînement:_
@@ -96,7 +90,7 @@ perl SemEval2017_task4_test_scorer_subtaskB.pl \
 
 ````
 
-On obtient les résultats suivants:
+On obtient ces résultats:
 ````text
 	positive: P=1.0000, R=0.7783, F1=0.8753
 	negative: P=0.0000, R=0.0000, F1=0.0000
@@ -114,8 +108,8 @@ Quoi, c'est déjà fini?
 
 Eh oui, on avance doucement mais sûrement, ce serait dommage de se cramer les ailes en si bon chemin non?
 
-Au prochain épisode, on ira charger les données avec 🐍, jouer un peu avec et ~~avec de la chance~~, on pourra obtenir 
-de premiers résultats; j'ai hâte de vous les montrer!  
+Au prochain épisode, on ira charger les données avec python 🐍, jouer un peu avec et ~~avec de la chance~~, on obtiendra 
+des premiers résultats; j'ai hâte de vous les montrer!  
 
 Allez, à la semaine prochaine!
 
