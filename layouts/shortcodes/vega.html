@@ -1,5 +1,5 @@
 {{ with ($div_id := .Get "div_id")}}
-    <div id={{ $div_id }}></div>
+    <div id={{ $div_id }} style="overflow-x: scroll; max-width: 1000px;"></div>
 
     {{ with ($file := ($.Page.Resources.Get ($.Get "file"))) }}
         <script type="text/javascript">

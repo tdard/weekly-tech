@@ -1,0 +1,184 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "background": "white",
+  "padding": 5,
+  "title": {
+    "text": "Negative to positive class ratio: 0.28",
+    "anchor": "start"
+  },
+  "data": [
+    {
+      "name": "data-2a98446bfe8ed5330d3bf33d8a316a13",
+      "values": [
+        {
+          "polarity": "negative",
+          "tweet_id": 2339,
+          "topic": 2339,
+          "tweet_text": 2339
+        },
+        {
+          "polarity": "positive",
+          "tweet_id": 8212,
+          "topic": 8212,
+          "tweet_text": 8212
+        }
+      ]
+    },
+    {
+      "name": "data_0",
+      "source": "data-2a98446bfe8ed5330d3bf33d8a316a13",
+      "transform": [
+        {
+          "type": "stack",
+          "groupby": ["polarity"],
+          "field": "tweet_id",
+          "sort": {"field": ["polarity"], "order": ["ascending"]},
+          "as": ["tweet_id_start", "tweet_id_end"],
+          "offset": "zero"
+        },
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"tweet_id\"]) && isFinite(+datum[\"tweet_id\"])"
+        }
+      ]
+    },
+    {
+      "name": "row_domain",
+      "source": "data_0",
+      "transform": [{"type": "aggregate", "groupby": ["polarity"]}]
+    }
+  ],
+  "signals": [
+    {"name": "child_width", "value": 400},
+    {"name": "child_height", "value": 20}
+  ],
+  "layout": {
+    "padding": 20,
+    "offset": {"rowTitle": 10},
+    "columns": 1,
+    "bounds": "full",
+    "align": "all"
+  },
+  "marks": [
+    {
+      "name": "row-title",
+      "type": "group",
+      "role": "row-title",
+      "title": {
+        "text": "Polarity",
+        "orient": "left",
+        "style": "guide-title",
+        "offset": 10
+      }
+    },
+    {
+      "name": "row_header",
+      "type": "group",
+      "role": "row-header",
+      "from": {"data": "row_domain"},
+      "sort": {"field": "datum[\"polarity\"]", "order": "ascending"},
+      "title": {
+        "text": {
+          "signal": "isValid(parent[\"polarity\"]) ? parent[\"polarity\"] : \"\"+parent[\"polarity\"]"
+        },
+        "orient": "left",
+        "style": "guide-label",
+        "frame": "group",
+        "offset": 10
+      },
+      "encode": {"update": {"height": {"signal": "child_height"}}}
+    },
+    {
+      "name": "column_footer",
+      "type": "group",
+      "role": "column-footer",
+      "encode": {"update": {"width": {"signal": "child_width"}}},
+      "axes": [
+        {
+          "scale": "x",
+          "orient": "bottom",
+          "grid": false,
+          "title": "Count of records",
+          "labelFlush": true,
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(child_width/40)"},
+          "zindex": 0
+        }
+      ]
+    },
+    {
+      "name": "cell",
+      "type": "group",
+      "style": "cell",
+      "from": {
+        "facet": {"name": "facet", "data": "data_0", "groupby": ["polarity"]}
+      },
+      "sort": {"field": ["datum[\"polarity\"]"], "order": ["ascending"]},
+      "encode": {
+        "update": {
+          "width": {"signal": "child_width"},
+          "height": {"signal": "child_height"}
+        }
+      },
+      "signals": [{"name": "height", "update": "child_height"}],
+      "marks": [
+        {
+          "name": "child_marks",
+          "type": "rect",
+          "style": ["bar"],
+          "from": {"data": "facet"},
+          "encode": {
+            "update": {
+              "fill": {"scale": "color", "field": "polarity"},
+              "tooltip": {
+                "signal": "{\"Polarity\": isValid(datum[\"polarity\"]) ? datum[\"polarity\"] : \"\"+datum[\"polarity\"], \"Count\": format(datum[\"tweet_id\"], \"\")}"
+              },
+              "ariaRoleDescription": {"value": "bar"},
+              "description": {
+                "signal": "\"Polarity: \" + (isValid(datum[\"polarity\"]) ? datum[\"polarity\"] : \"\"+datum[\"polarity\"]) + \"; Count: \" + (format(datum[\"tweet_id\"], \"\")) + \"; Count of records: \" + (format(datum[\"tweet_id\"], \"\"))"
+              },
+              "x": {"scale": "x", "field": "tweet_id_end"},
+              "x2": {"scale": "x", "field": "tweet_id_start"},
+              "yc": {"signal": "child_height", "mult": 0.5},
+              "height": {"value": 18}
+            }
+          }
+        }
+      ],
+      "axes": [
+        {
+          "scale": "x",
+          "orient": "bottom",
+          "grid": true,
+          "tickCount": {"signal": "ceil(child_width/40)"},
+          "domain": false,
+          "labels": false,
+          "aria": false,
+          "maxExtent": 0,
+          "minExtent": 0,
+          "ticks": false,
+          "zindex": 0
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "linear",
+      "domain": {
+        "data": "data_0",
+        "fields": ["tweet_id_start", "tweet_id_end"]
+      },
+      "range": [0, {"signal": "child_width"}],
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {"data": "data_0", "field": "polarity", "sort": true},
+      "range": ["red", "green"]
+    }
+  ]
+}

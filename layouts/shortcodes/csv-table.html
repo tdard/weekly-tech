@@ -1,0 +1,26 @@
+{{ with .Page.Resources.Get (.Get "file") }}
+<div style="overflow-y: scroll; max-height: 400px; max-width: 1000px; border: 1px solid black;">
+    <table>
+    <thead>
+      <tr>
+      <th>ID</th>
+      <th>Topic</th>
+      <th>Polarity</th>
+      <th>Text</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{ $url := .Permalink }}
+    {{ $sep := ","}}
+    {{ range $i, $r := getCSV $sep $url }}
+      <tr>
+        <td>{{ index $r 0 }}</td>
+        <td>{{ index $r 1 }}</td>
+        <td>{{ index $r 2 }}</td>
+        <td>{{ index $r 3 }}</td>
+      </tr>
+    {{ end }}
+    </tbody>
+  </table>
+</div>
+{{ end }}
