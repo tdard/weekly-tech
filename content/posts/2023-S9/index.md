@@ -2,6 +2,7 @@
 title: "Episode 2: résoudre une tâche d'Aspect Based Sentiment Analysis - Analyse exploratoire"
 date: 2023-03-21T09:03:36+01:00
 draft: false
+tags: ["data science", "sentiment analysis", "absa"]
 resources:
 - name: config_1
   src: config_1.vg.json

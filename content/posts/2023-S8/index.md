@@ -2,6 +2,7 @@
 title: "Episode 1: résoudre une tâche d'Aspect Based Sentiment Analysis - Préliminaires"
 date: 2023-03-06T17:07:53+01:00
 draft: false
+tags: ["data science", "sentiment analysis", "absa"]
 summary: "Dans cette série, nous allons tenter de résoudre un problème d'analyse de sentiments, en nous basant sur des 
 jeux de données de référence et des techniques de l'état de l'art."
 ---
