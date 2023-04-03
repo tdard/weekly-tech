@@ -10,6 +10,7 @@ resources:
   src: config_2.vg.json
 - name: sample_data 
   src: sample_data.csv
+summary: "Cet article présente l'analyse exploratoire d'un _dataset_ de tweets pour le challenge SemEval2017"
 ---
 
 ## 📂 Episodes précédents
