@@ -6,12 +6,20 @@ tags: ["data science", "sentiment analysis", "absa"]
 summary: "Dans cette série, nous allons tenter de résoudre un problème d'analyse de sentiments, en nous basant sur des 
 jeux de données de référence et des techniques de l'état de l'art."
 ---
+# 📂 Episodes précédents
+
+_Sur la même thématique_:
+- {{< page_link path="/posts/2023-S6" >}}
+- {{< page_link path="/posts/2023-S7" >}}
+
+Série _résoudre une tâche d'Aspect Based Sentiment Analysis_:
+- **{{< page_link path="/posts/2023-S8" >}}**
 
 # 📝 Mise en contexte
 Là, on en a marre. Théorie par-ci, explications fumeuses par là; quand est-ce qu'on pratique?
 
 Et bien Marcel mets ta ceinture, parce qu'on va se lancer dans une grande aventure: celle de résoudre une tâche 
-d'_Aspect Based Sentiment Analysis_.
+d'_Aspect Based Sentiment Analysis_ (ABSA).
 
 Laquelle? Et bien comme on a été curieux, on sait désormais qu'il y a plusieurs challenges phares dans ce domaine: 
 c'est les évènements _SemEval-20XX_ (pour _Semantic Evaluation_), déclinés en plusieurs millésimes de 2014 à 2017. 
@@ -21,7 +29,18 @@ mais je leur rappelerai que les tâches de ces challenges ne sont pas en lien av
 
 Comme on aime la modernité, on va s'intéresser seulement au petit dernier, le **SemEval-2017**. 
 
+
+
+
 # ⚙️ Mise en place de l'environnement
+
+**C'est quoi ce  challenge? Qu'est-ce qu'on va y faire?**
+
+Alors c'est très simple. Le challenge SemEval, c'est un évènement qui propose une liste de sujets centrés sur la 
+thématique d'évaluation sémantique, aka. dire des choses sur du texte. Il y a plusieurs sujets, et dans chaque sujets on 
+retrouve des sous-problèmes. Chaque sujet est grosso-modo un problème général (par exemple _Sentiment Analysis in 
+Twitter_), et chaque sous-problème aborde une facette du sujet. 
+
 
 Alors direction le [site internet](https://alt.qcri.org/semeval2017/index.php?id=tasks) du challenge, regardons les 
 problèmes à résoudre associés à:
@@ -29,9 +48,14 @@ problèmes à résoudre associés à:
 
 {{< figure src="figure_1.png"  width="400">}}
 
+Dans notre cas particulier, on a l'embarras du choix:
+- Message Polarity Classification: Given a message, classify whether the message is of positive, negative, or neutral 
+sentiment.
+- Topic-Based Message Polarity Classification [...]
+- Tweet quantification: Given a set of tweets about a given topic, estimate the distribution of the tweets [...]
 
-On remarque que ce qui nous intéresse est sûrement dans les tâches 4 et 5, en jetant un oeil à la quatrième on réalise 
-qu'il y a de quoi faire, puisque le problème **B** demande de trouver la polarité d'un message de tweet par topic.
+Comme nous nous intéressons avant-tout aux problèmes d'_ABSA_, prenons le parti de choisir le second challenge, décrit 
+ci-dessous:
 
 ![figure_2](figure_2.png)
 
@@ -44,7 +68,7 @@ On remarque cinq fichiers dans l'archive de données
 
 {{<figure src="figure_3.png" height="150">}} 
 En y jetant un oeil et en lisant le README on se rend compte que:
-- **baseline-B-english.txt** est un fichier regroupant les prédictions de la méthode baseline pour le problème **B**, on y 
+- **baseline-B-english.txt** est un fichier regroupant les prédictions de la méthode baseline, on y 
 voit 3 colonnes: identifiant de tweet, topic et polarité  
 - **SemEval2017-task4-dev.subtask-BD.english.INPUT.txt** est le dataset _train_, on y retrouve les mêmes colonnes ainsi 
 qu'une de plus, contenant le texte des tweets
@@ -53,6 +77,17 @@ train, sans la dernière colonne. On a juste les vérités terrains quoi ⚠️E
 donc on s'en fiche
 - **SemEval2017_task4_test_scorer_subtaskB.pl** est un script `perl` permettant de calculer les métriques du challenge 
 à partir de prédictions. Celles-ci sont: _macro-average Recall_, _macro-average F1_, et _Accuracy_
+
+**Remarques**
+- D'après le [compte rendu](https://aclanthology.org/S16-1002.pdf) du challenge de l'année précédente, la méthode baseline 
+est le classifier qui attribue à chaque tweet une polarité positive.
+- Le macro-averaged est défini de façon particulière, puisqu'il ne s'agit pas d'un recall classique. Suit la formulation 
+du recall:
+  - \\( R_{topic} = \frac{1}{2}( R_{topic, N} + R_{topic, P}) \\) avec \\( R_{topic, X} \\) le rappel pour le topic et 
+la polarité X
+  - \\( R = \frac{1}{N} \sum_{topic} R_{topic} \\)
+
+
 
 
 _Un exemple du dataset d'entraînement:_

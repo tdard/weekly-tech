@@ -12,6 +12,19 @@ resources:
   src: sample_data.csv
 ---
 
+## 📂 Episodes précédents
+
+_Sur la même thématique_:
+- {{< page_link path="/posts/2023-S6" >}}
+- {{< page_link path="/posts/2023-S7" >}}
+
+Série _résoudre une tâche d'Aspect Based Sentiment Analysis_:
+- {{< page_link path="/posts/2023-S8" >}}
+- **{{< page_link path="/posts/2023-S9" >}}**
+
+
+## 🌴 Introduction
+
 Après deux bonnes semaines de pause ~~passées à se prélasser au bord d'une piscine d'un hôtel 5 étoiles aux Bahamas~~, 
 nous pouvons enfin reprendre les choses sérieuses. 
 
@@ -25,7 +38,7 @@ tout de suite...
 Tout le travail qui suit a été effectué dans un environnement _jupyter_.
 
 
-## C'est parti
+## 🚀C'est parti
 
 Pour cette étude nous n'avons besoin que de deux librairie: _pandas_ (pour charger les données et calculer des stats), puis _altair_ 
 (pour la data-viz). Définissons le chemin vers les données d'entraînement.
@@ -194,7 +207,7 @@ Islam..may be he was just fed up of religions"_ est considéré négatif envers 
 tweet se demande pourquoi une certaine personne serait contre cette religion
 
 
-## Et pour la suite?
+## 🧐 Et pour la suite?
 Je ne sais pas vous, mais jusqu'ici je suis assez satisfait de la compéhension du jeu de données:
 - On sait qu'on fait face à un bon déséquilibre de classes, tant dans les topics que dans la polarité
 - Que pour l'écrasante majorité des cas, on a un seul topic concerné par tweet
