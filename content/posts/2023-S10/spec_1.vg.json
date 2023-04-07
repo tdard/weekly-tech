@@ -3,24 +3,42 @@
   "background": "white",
   "padding": 5,
   "height": 300,
+  "title": {
+    "text": "Répartition de la polarité en fonction du dataset",
+    "anchor": "start"
+  },
   "data": [
     {
-      "name": "data-c2ca92692c6c098d5039138397e1b9a1",
+      "name": "data-440f2368ad08d1a1fc5eb101722e5cc8",
       "values": [
-        {"values": "negative", "counts": 1637},
-        {"values": "positive", "counts": 5748}
+        {"values": "negative", "counts": 679},
+        {"values": "positive", "counts": 3236}
       ]
     },
     {
-      "name": "data-98c5aa96621c0ac8fce499508155c3ed",
+      "name": "data-377c96810d5e213d405343eaed6729ef",
       "values": [
-        {"values": "negative", "counts": 702},
-        {"values": "positive", "counts": 2464}
+        {"values": "negative", "counts": 317},
+        {"values": "positive", "counts": 862}
+      ]
+    },
+    {
+      "name": "data-8b6dbe9feedd49281742232e00feff9f",
+      "values": [
+        {"values": "negative", "counts": 234},
+        {"values": "positive", "counts": 1017}
+      ]
+    },
+    {
+      "name": "data-1af68ab5f2bc42e26a9df0c8b75a2655",
+      "values": [
+        {"values": "negative", "counts": 3722},
+        {"values": "positive", "counts": 2463}
       ]
     },
     {
       "name": "data_0",
-      "source": "data-c2ca92692c6c098d5039138397e1b9a1",
+      "source": "data-440f2368ad08d1a1fc5eb101722e5cc8",
       "transform": [
         {
           "type": "filter",
@@ -30,7 +48,27 @@
     },
     {
       "name": "data_1",
-      "source": "data-98c5aa96621c0ac8fce499508155c3ed",
+      "source": "data-377c96810d5e213d405343eaed6729ef",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"counts\"]) && isFinite(+datum[\"counts\"])"
+        }
+      ]
+    },
+    {
+      "name": "data_2",
+      "source": "data-8b6dbe9feedd49281742232e00feff9f",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "isValid(datum[\"counts\"]) && isFinite(+datum[\"counts\"])"
+        }
+      ]
+    },
+    {
+      "name": "data_3",
+      "source": "data-1af68ab5f2bc42e26a9df0c8b75a2655",
       "transform": [
         {
           "type": "filter",
@@ -45,7 +83,7 @@
     {
       "type": "group",
       "name": "concat_0_group",
-      "title": {"text": "Train target statistics", "frame": "group"},
+      "title": {"text": "train", "frame": "group"},
       "style": "cell",
       "encode": {
         "update": {
@@ -139,7 +177,7 @@
     {
       "type": "group",
       "name": "concat_1_group",
-      "title": {"text": "Validation target statistics", "frame": "group"},
+      "title": {"text": "dev", "frame": "group"},
       "style": "cell",
       "encode": {
         "update": {
@@ -229,6 +267,194 @@
           "zindex": 0
         }
       ]
+    },
+    {
+      "type": "group",
+      "name": "concat_2_group",
+      "title": {"text": "devtest", "frame": "group"},
+      "style": "cell",
+      "encode": {
+        "update": {
+          "width": {"signal": "childWidth"},
+          "height": {"signal": "height"}
+        }
+      },
+      "marks": [
+        {
+          "name": "concat_2_layer_0_marks",
+          "type": "rect",
+          "style": ["bar"],
+          "from": {"data": "data_2"},
+          "encode": {
+            "update": {
+              "fill": [
+                {"test": "(datum.values === 'positive')", "value": "green"},
+                {"value": "red"}
+              ],
+              "ariaRoleDescription": {"value": "bar"},
+              "description": {
+                "signal": "\"Target value: \" + (isValid(datum[\"values\"]) ? datum[\"values\"] : \"\"+datum[\"values\"]) + \"; Count: \" + (format(datum[\"counts\"], \"\"))"
+              },
+              "x": {"scale": "concat_2_x", "field": "values"},
+              "width": {"scale": "concat_2_x", "band": 1},
+              "y": {"scale": "concat_2_y", "field": "counts"},
+              "y2": {"scale": "concat_2_y", "value": 0}
+            }
+          }
+        },
+        {
+          "name": "concat_2_layer_1_marks",
+          "type": "text",
+          "style": ["text"],
+          "from": {"data": "data_2"},
+          "encode": {
+            "update": {
+              "dy": {"value": -10},
+              "fill": [
+                {"test": "(datum.values === 'positive')", "value": "green"},
+                {"value": "red"}
+              ],
+              "description": {
+                "signal": "\"counts: \" + (format(datum[\"counts\"], \"\")) + \"; Target value: \" + (isValid(datum[\"values\"]) ? datum[\"values\"] : \"\"+datum[\"values\"]) + \"; Count: \" + (format(datum[\"counts\"], \"\"))"
+              },
+              "x": {"scale": "concat_2_x", "field": "values", "band": 0.5},
+              "y": {"scale": "concat_2_y", "field": "counts"},
+              "text": {"signal": "format(datum[\"counts\"], \"\")"},
+              "align": {"value": "center"},
+              "baseline": {"value": "middle"}
+            }
+          }
+        }
+      ],
+      "axes": [
+        {
+          "scale": "concat_2_y",
+          "orient": "left",
+          "gridScale": "concat_2_x",
+          "grid": true,
+          "tickCount": {"signal": "ceil(height/40)"},
+          "domain": false,
+          "labels": false,
+          "aria": false,
+          "maxExtent": 0,
+          "minExtent": 0,
+          "ticks": false,
+          "zindex": 0
+        },
+        {
+          "scale": "concat_2_x",
+          "orient": "bottom",
+          "grid": false,
+          "title": "Target value",
+          "labelAlign": "right",
+          "labelAngle": 270,
+          "labelBaseline": "middle",
+          "zindex": 0
+        },
+        {
+          "scale": "concat_2_y",
+          "orient": "left",
+          "grid": false,
+          "title": "Count",
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(height/40)"},
+          "zindex": 0
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "concat_3_group",
+      "title": {"text": "test", "frame": "group"},
+      "style": "cell",
+      "encode": {
+        "update": {
+          "width": {"signal": "childWidth"},
+          "height": {"signal": "height"}
+        }
+      },
+      "marks": [
+        {
+          "name": "concat_3_layer_0_marks",
+          "type": "rect",
+          "style": ["bar"],
+          "from": {"data": "data_3"},
+          "encode": {
+            "update": {
+              "fill": [
+                {"test": "(datum.values === 'positive')", "value": "green"},
+                {"value": "red"}
+              ],
+              "ariaRoleDescription": {"value": "bar"},
+              "description": {
+                "signal": "\"Target value: \" + (isValid(datum[\"values\"]) ? datum[\"values\"] : \"\"+datum[\"values\"]) + \"; Count: \" + (format(datum[\"counts\"], \"\"))"
+              },
+              "x": {"scale": "concat_3_x", "field": "values"},
+              "width": {"scale": "concat_3_x", "band": 1},
+              "y": {"scale": "concat_3_y", "field": "counts"},
+              "y2": {"scale": "concat_3_y", "value": 0}
+            }
+          }
+        },
+        {
+          "name": "concat_3_layer_1_marks",
+          "type": "text",
+          "style": ["text"],
+          "from": {"data": "data_3"},
+          "encode": {
+            "update": {
+              "dy": {"value": -10},
+              "fill": [
+                {"test": "(datum.values === 'positive')", "value": "green"},
+                {"value": "red"}
+              ],
+              "description": {
+                "signal": "\"counts: \" + (format(datum[\"counts\"], \"\")) + \"; Target value: \" + (isValid(datum[\"values\"]) ? datum[\"values\"] : \"\"+datum[\"values\"]) + \"; Count: \" + (format(datum[\"counts\"], \"\"))"
+              },
+              "x": {"scale": "concat_3_x", "field": "values", "band": 0.5},
+              "y": {"scale": "concat_3_y", "field": "counts"},
+              "text": {"signal": "format(datum[\"counts\"], \"\")"},
+              "align": {"value": "center"},
+              "baseline": {"value": "middle"}
+            }
+          }
+        }
+      ],
+      "axes": [
+        {
+          "scale": "concat_3_y",
+          "orient": "left",
+          "gridScale": "concat_3_x",
+          "grid": true,
+          "tickCount": {"signal": "ceil(height/40)"},
+          "domain": false,
+          "labels": false,
+          "aria": false,
+          "maxExtent": 0,
+          "minExtent": 0,
+          "ticks": false,
+          "zindex": 0
+        },
+        {
+          "scale": "concat_3_x",
+          "orient": "bottom",
+          "grid": false,
+          "title": "Target value",
+          "labelAlign": "right",
+          "labelAngle": 270,
+          "labelBaseline": "middle",
+          "zindex": 0
+        },
+        {
+          "scale": "concat_3_y",
+          "orient": "left",
+          "grid": false,
+          "title": "Count",
+          "labelOverlap": true,
+          "tickCount": {"signal": "ceil(height/40)"},
+          "zindex": 0
+        }
+      ]
     }
   ],
   "scales": [
@@ -260,6 +486,38 @@
       "name": "concat_1_y",
       "type": "linear",
       "domain": {"data": "data_1", "field": "counts"},
+      "range": [{"signal": "height"}, 0],
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "concat_2_x",
+      "type": "band",
+      "domain": {"data": "data_2", "field": "values", "sort": true},
+      "range": [0, {"signal": "childWidth"}],
+      "paddingInner": 0.1,
+      "paddingOuter": 0.05
+    },
+    {
+      "name": "concat_2_y",
+      "type": "linear",
+      "domain": {"data": "data_2", "field": "counts"},
+      "range": [{"signal": "height"}, 0],
+      "nice": true,
+      "zero": true
+    },
+    {
+      "name": "concat_3_x",
+      "type": "band",
+      "domain": {"data": "data_3", "field": "values", "sort": true},
+      "range": [0, {"signal": "childWidth"}],
+      "paddingInner": 0.1,
+      "paddingOuter": 0.05
+    },
+    {
+      "name": "concat_3_y",
+      "type": "linear",
+      "domain": {"data": "data_3", "field": "counts"},
       "range": [{"signal": "height"}, 0],
       "nice": true,
       "zero": true
