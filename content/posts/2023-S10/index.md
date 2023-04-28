@@ -1,7 +1,7 @@
 ---
 title: "Episode 3: résoudre une tâche d'Aspect Based Sentiment Analysis - Modélisation"
 date: 2023-03-29T09:44:40+02:00
-draft: true
+draft: false
 tags: ["data science", "sentiment analysis", "absa"]
 resources:
 - name: spec_1
@@ -100,7 +100,7 @@ Alors pour **entraîner un modèle et analyser ses résultats**, il nous faut:
 3. Calculer des métriques pour nous informer sur la qualité des résultats
 4. Sauvegarder les prédictions fausses quelque part pour les analyser individuellement
 
-Ici on s'en fout du 4è point parce qu'on est des fous, et qu'on le fera plus tard dans un autre article.
+Ici on s'en fiche du 4è point parce qu'on est des voyous, et qu'on le fera plus tard dans un autre article.
 
 ### Données requises
 
@@ -394,7 +394,7 @@ Et maintenant, on fait quoi?
 
 
 Alors je sais pas toi mais je suis tenté par tuner notre modèle pour voir jusqu'où on peut pousser les performances d'un 
-algorithme bien simple, puis par la suite partir sur quelque chose de plus exotique 🍉 comme des transformers type BERT.
+algorithme bien simple, puis par la suite partir sur quelque chose de plus exotique 🍉 comme des LLM type BERT ou GPT.
 
 
 A la prochaine!
