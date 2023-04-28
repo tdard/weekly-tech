@@ -1,5 +1,5 @@
 ---
-title: "Episode 3: résoudre une tâche d'Aspect Based Sentiment Analysis - Modélisation"
+title: "Episode 3: résoudre une tâche d'Aspect Based Sentiment Analysis - Baseline et 1ère modélisation"
 date: 2023-03-29T09:44:40+02:00
 draft: false
 tags: ["data science", "sentiment analysis", "absa"]
