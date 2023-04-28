@@ -7,6 +7,8 @@ resources:
 - name: spec_1
   src: spec_1.vg.json
 featured_image: "meme accuracy.jpeg"
+summary: "Dans cet épisode, nous allons construire une baseline pour nous assurer d'être bien partis, nous 
+introduirons également un modèle un peu moins bête nous permettant de nous comparer aux participants du challenge"
 ---
 
 ## 📂 Episodes précédents
