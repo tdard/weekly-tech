@@ -109,8 +109,8 @@ Ici on s'en fiche du 4è point parce qu'on est des voyous, et qu'on le fera plus
 
 ### Préparation des données
 
-Comme nous ne sommes pas des cochons mais que nous développons notre modèle dans un notebook (oxymore), nous mettrons en 
-place des fonctions utilitaires pour rendre notre code plus clean.
+Comme nous ne sommes pas des cochons mais que nous développons notre modèle dans un notebook (belle antithèse 
+remarquez-vous 🤡), nous mettrons en place des fonctions utilitaires pour rendre notre code plus clean.
 
 #### Chargement
 
